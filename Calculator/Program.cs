@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace Calculator
                     divisionNumbers();
                     break;
                 default:
-                    // code block
+                    addNumbers();
                     break;
             }
 
@@ -41,19 +42,18 @@ namespace Calculator
             var numbers = new List<double>();
             var sum = 0.0;
             Console.WriteLine("Enter your desired number");
-            var firstNumber = double.Parse(Console.ReadLine());
+            string x = Console.ReadLine();
+            double firstNumber = double.Parse(x, CultureInfo.InvariantCulture); ;
             numbers.Add(firstNumber);
 
             ConsoleKeyInfo name = Console.ReadKey();
             while (name.KeyChar.ToString() == "+")
-            
             {
-                
-                
                 Console.WriteLine("Enter your desired another number");
 
-                var secoundNumber = 0.0;
-                double.TryParse(Console.ReadLine(), out secoundNumber);
+                var y = Console.ReadLine();
+                var secoundNumber = double.Parse(y, CultureInfo.InvariantCulture); ;
+                //double.TryParse(Console.ReadLine(), out secoundNumber);
                 numbers.Add(secoundNumber);
                 name = Console.ReadKey();
                 secoundNumber = 0.0;
@@ -62,20 +62,54 @@ namespace Calculator
                     for (int i = 0; i < numbers.Count; i++)
                     {
                         sum = sum + numbers[i];
-                        
                     }
                 }
-
             }
             Console.WriteLine(sum);
             return sum;
         }
 
-        public static int subtractNumbers()
+        public static double subtractNumbers()
         {
-            int sum = 180;
-            Console.WriteLine(sum);
-            return 100;
+            Console.WriteLine("Enter the bigger number ");
+            string x = Console.ReadLine();
+            var biggerNumber = Convert.ToDouble(x, CultureInfo.InvariantCulture);
+            //double.TryParse(Console.ReadLine(), out biggerNumber);
+
+            //Console.WriteLine("Enter the smaller number ");
+            //string y = Console.ReadLine();
+            //var smallNumber = Convert.ToDouble(y, CultureInfo.InvariantCulture);
+
+
+            var newResult = 0.0;
+            var subtractNumbers = new List<double>();
+            
+            //result = biggerNumber - smallNumber;
+            subtractNumbers.Add(biggerNumber);
+
+            ConsoleKeyInfo name = Console.ReadKey();
+            while (name.KeyChar.ToString() == "-")
+            {
+                Console.WriteLine("Enter your desired another number");
+
+                var z = Console.ReadLine();
+                var checkedNumber = double.Parse(z, CultureInfo.InvariantCulture);
+                //double.TryParse(Console.ReadLine(), out secoundNumber);
+
+                newResult = subtractNumbers[subtractNumbers.Count-1]-checkedNumber;
+                subtractNumbers.Add(newResult);
+                name = Console.ReadKey();
+                
+                
+                checkedNumber = 0.0;
+
+                if (name.KeyChar.ToString() == "=")
+                {
+                    Console.WriteLine(newResult);
+                    break;
+                }
+            }
+            return newResult;
         }
 
         public static int multiplicationNumbers()
