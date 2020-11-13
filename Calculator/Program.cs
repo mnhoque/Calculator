@@ -9,12 +9,14 @@ namespace Calculator
 {
     class Program
     {
+        //static List<double> numbers = new List<double>();
+
         static void Main(string[] args)
         {
             Console.WriteLine("What do you want ?");
 
             int.TryParse(Console.ReadLine(),out int number);
-
+            
             switch (number)
             {
                 case 1:
@@ -43,7 +45,7 @@ namespace Calculator
             var sum = 0.0;
             Console.WriteLine("Enter your desired number");
             string x = Console.ReadLine();
-            double firstNumber = double.Parse(x, CultureInfo.InvariantCulture); ;
+            double firstNumber = double.Parse(x); 
             numbers.Add(firstNumber);
 
             ConsoleKeyInfo name = Console.ReadKey();
@@ -52,7 +54,7 @@ namespace Calculator
                 Console.WriteLine("Enter your desired another number");
 
                 var y = Console.ReadLine();
-                var secoundNumber = double.Parse(y, CultureInfo.InvariantCulture); ;
+                var secoundNumber = double.Parse(y); 
                 //double.TryParse(Console.ReadLine(), out secoundNumber);
                 numbers.Add(secoundNumber);
                 name = Console.ReadKey();
@@ -72,11 +74,11 @@ namespace Calculator
         public static double subtractNumbers()
         {
             Console.WriteLine("Enter the bigger number ");
-            string x = Console.ReadLine();
-            var biggerNumber = Convert.ToDouble(x, CultureInfo.InvariantCulture);
-            //double.TryParse(Console.ReadLine(), out biggerNumber);
+            //string x = Console.ReadLine();
+            double biggerNumber = 0.0;
+            double.TryParse(Console.ReadLine(), out biggerNumber);
 
-            //Console.WriteLine("Enter the smaller number ");
+            
             //string y = Console.ReadLine();
             //var smallNumber = Convert.ToDouble(y, CultureInfo.InvariantCulture);
 
@@ -88,13 +90,15 @@ namespace Calculator
             subtractNumbers.Add(biggerNumber);
 
             ConsoleKeyInfo name = Console.ReadKey();
+            
+            
             while (name.KeyChar.ToString() == "-")
             {
                 Console.WriteLine("Enter your desired another number");
 
-                var z = Console.ReadLine();
-                var checkedNumber = double.Parse(z, CultureInfo.InvariantCulture);
-                //double.TryParse(Console.ReadLine(), out secoundNumber);
+                //var z = Console.ReadLine();
+                double checkedNumber = 0.0; 
+                double.TryParse(Console.ReadLine(), out checkedNumber);
 
                 newResult = subtractNumbers[subtractNumbers.Count-1]-checkedNumber;
                 subtractNumbers.Add(newResult);
@@ -112,17 +116,42 @@ namespace Calculator
             return newResult;
         }
 
-        public static int multiplicationNumbers()
+        public static double multiplicationNumbers()
         {
-            int sum = 170;
-            Console.WriteLine(sum);
-            return 100;
+            var multiplicationNumbers = new List<double>();
+            Console.WriteLine("Enter a number ");
+            var entered_Number = double.Parse(Console.ReadLine());
+            multiplicationNumbers.Add(entered_Number);
+            
+            double total_Multiplication = 0.0;
+            ConsoleKeyInfo name = Console.ReadKey();
+
+            while (name.KeyChar.ToString() == "*")
+            {
+                Console.WriteLine("Enter your desired another number");
+
+                //var z = Console.ReadLine();
+                double checkedNumber = 0.0;//, CultureInfo.InvariantCulture
+                double.TryParse(Console.ReadLine(), out checkedNumber);
+
+                total_Multiplication = multiplicationNumbers[multiplicationNumbers.Count - 1] * checkedNumber;
+                multiplicationNumbers.Add(total_Multiplication);
+                name = Console.ReadKey();
+
+                checkedNumber = 0.0;
+
+                if (name.KeyChar.ToString() == "=")
+                {
+                    Console.WriteLine(total_Multiplication);
+                    break;
+                }
+            }
+                //Console.WriteLine(total_Multiplication);
+            return total_Multiplication;
         }
 
         public static int divisionNumbers()
         {
-            int sum = 10;
-            Console.WriteLine(sum);
             return 100;
         }
     }
