@@ -15,26 +15,46 @@ namespace Calculator
         {
             Console.WriteLine("What do you want ?");
             Console.WriteLine("Enter a number between 1 to 4");
-            int.TryParse(Console.ReadLine(), out int number);
+            
 
-            switch (number)
+            for (int a = 0; a < 50; a--)
             {
-                case 1:
-                addNumbers();
-                break;
-                case 2:
-                subtractNumbers();
-                break;
-                case 3:
-                multiplicationNumbers();
-                break;
-                case 4:
-                divisionNumbers();
-                break;
-                default:
-                addNumbers();
-                break;
+                //Console.WriteLine("value : {0}", a);
+                int.TryParse(Console.ReadLine(), out int number);
+                switch (number)
+                {
+                    case 1:
+                        addNumbers();
+                        //Console.WriteLine("Do you want to leave the program");
+                        break;
+                    case 2:
+                        subtractNumbers();
+                        break;
+                    case 3:
+                        multiplicationNumbers();
+                        break;
+                    case 4:
+                        divisionNumbers();
+                        break;
+                    default:
+                        addNumbers();
+                        break;
+                }
+                Console.WriteLine("Do you want to leave the program");
+                Console.WriteLine("Please press yes or no ");
+                string pressedWord = Console.ReadLine().ToLower();
+                if (pressedWord == "yes")
+                {
+                    Console.WriteLine("Bye bye");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Enter a number between 1 to 4 again ");
+                    continue;
+                }
             }
+            
             Console.ReadKey();
         }
 
@@ -52,9 +72,9 @@ namespace Calculator
             {
                 Console.WriteLine("Enter your desired another number");
 
-                var y = Console.ReadLine();
-                var secoundNumber = double.Parse(y); 
-                //double.TryParse(Console.ReadLine(), out secoundNumber);
+                //var y = Console.ReadLine();
+                double secoundNumber = 0.0; 
+                double.TryParse(Console.ReadLine(), out secoundNumber);
                 numbers.Add(secoundNumber);
                 name = Console.ReadKey();
                 secoundNumber = 0.0;
