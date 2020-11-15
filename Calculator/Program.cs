@@ -14,28 +14,27 @@ namespace Calculator
         static void Main(string[] args)
         {
             Console.WriteLine("What do you want ?");
+            Console.WriteLine("Enter a number between 1 to 4");
+            int.TryParse(Console.ReadLine(), out int number);
 
-            int.TryParse(Console.ReadLine(),out int number);
-            
             switch (number)
             {
                 case 1:
-                    addNumbers();
-                    break;
+                addNumbers();
+                break;
                 case 2:
-                    subtractNumbers();
-                    break;
+                subtractNumbers();
+                break;
                 case 3:
-                    multiplicationNumbers();
-                    break;
+                multiplicationNumbers();
+                break;
                 case 4:
-                    divisionNumbers();
-                    break;
+                divisionNumbers();
+                break;
                 default:
-                    addNumbers();
-                    break;
+                addNumbers();
+                break;
             }
-
             Console.ReadKey();
         }
 
@@ -150,9 +149,37 @@ namespace Calculator
             return total_Multiplication;
         }
 
-        public static int divisionNumbers()
+        public static double divisionNumbers()
         {
-            return 100;
+            var dividedNumbers = new List<double>();
+            Console.WriteLine("Enter a number ");
+            var entered_Number = double.Parse(Console.ReadLine());
+            dividedNumbers.Add(entered_Number);
+
+            double total_Division = 0.0;
+            ConsoleKeyInfo name = Console.ReadKey();
+
+            while (name.KeyChar.ToString() == "/")
+            {
+                Console.WriteLine("Enter your desired another number");
+
+                //var z = Console.ReadLine();
+                double checkedNumber = 0.0;//, CultureInfo.InvariantCulture
+                double.TryParse(Console.ReadLine(), out checkedNumber);
+
+                total_Division = dividedNumbers[dividedNumbers.Count - 1] / checkedNumber;
+                dividedNumbers.Add(total_Division);
+                name = Console.ReadKey();
+
+                checkedNumber = 0.0;
+
+                if (name.KeyChar.ToString() == "=")
+                {
+                    Console.WriteLine(total_Division);
+                    break;
+                }
+            }
+            return total_Division;
         }
     }
 }
