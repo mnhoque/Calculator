@@ -19,13 +19,12 @@ namespace Calculator
 
             for (int a = 0; a < 50; a--)
             {
-                //Console.WriteLine("value : {0}", a);
                 int.TryParse(Console.ReadLine(), out int number);
                 switch (number)
                 {
                     case 1:
                         addNumbers();
-                        //Console.WriteLine("Do you want to leave the program");
+                        
                         break;
                     case 2:
                         subtractNumbers();
@@ -71,8 +70,7 @@ namespace Calculator
             while (name.KeyChar.ToString() == "+")
             {
                 Console.WriteLine("Enter your desired another number");
-
-                //var y = Console.ReadLine();
+                
                 double secoundNumber = 0.0; 
                 double.TryParse(Console.ReadLine(), out secoundNumber);
                 numbers.Add(secoundNumber);
@@ -93,19 +91,13 @@ namespace Calculator
         public static double subtractNumbers()
         {
             Console.WriteLine("Enter the bigger number ");
-            //string x = Console.ReadLine();
+            
             double biggerNumber = 0.0;
             double.TryParse(Console.ReadLine(), out biggerNumber);
-
-            
-            //string y = Console.ReadLine();
-            //var smallNumber = Convert.ToDouble(y, CultureInfo.InvariantCulture);
-
 
             var newResult = 0.0;
             var subtractNumbers = new List<double>();
             
-            //result = biggerNumber - smallNumber;
             subtractNumbers.Add(biggerNumber);
 
             ConsoleKeyInfo name = Console.ReadKey();
@@ -114,8 +106,7 @@ namespace Calculator
             while (name.KeyChar.ToString() == "-")
             {
                 Console.WriteLine("Enter your desired another number");
-
-                //var z = Console.ReadLine();
+                
                 double checkedNumber = 0.0; 
                 double.TryParse(Console.ReadLine(), out checkedNumber);
 
@@ -148,9 +139,8 @@ namespace Calculator
             while (name.KeyChar.ToString() == "*")
             {
                 Console.WriteLine("Enter your desired another number");
-
-                //var z = Console.ReadLine();
-                double checkedNumber = 0.0;//, CultureInfo.InvariantCulture
+                
+                double checkedNumber = 0.0;
                 double.TryParse(Console.ReadLine(), out checkedNumber);
 
                 total_Multiplication = multiplicationNumbers[multiplicationNumbers.Count - 1] * checkedNumber;
@@ -165,7 +155,7 @@ namespace Calculator
                     break;
                 }
             }
-                //Console.WriteLine(total_Multiplication);
+                
             return total_Multiplication;
         }
 
@@ -183,8 +173,8 @@ namespace Calculator
             {
                 Console.WriteLine("Enter your desired another number");
 
-                //var z = Console.ReadLine();
-                double checkedNumber = 0.0;//, CultureInfo.InvariantCulture
+                
+                double checkedNumber = 0.0;
                 double.TryParse(Console.ReadLine(), out checkedNumber);
 
                 total_Division = dividedNumbers[dividedNumbers.Count - 1] / checkedNumber;
